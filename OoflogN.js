@@ -18,3 +18,27 @@
 //
 // ** side note O(nlog n) steep upward curve but most efficient
 // for mixed items - not only numbers, like numbers and strings.
+
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    console.log(`Checking index ${mid}, value: ${arr[mid]}`);
+
+    if (arr[mid] === target) {
+      return mid; // Found!
+    } else if (arr[mid] < target) {
+      left = mid + 1; // Search right half
+    } else {
+      right = mid - 1; // Search left half
+    }
+  }
+
+  return -1; // Not found
+}
+
+const sortedArray = [1, 3, 5, 7, 9, 11, 13, 15];
+const result = binarySearch(sortedArray, 11);
+console.log(`Result index: ${result}`);
