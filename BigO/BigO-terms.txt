@@ -1,0 +1,7 @@
+O(n^2) -- Loop within a loop
+
+O(n) -- proportional
+
+O(log n) -- Divide and Conquer
+
+O(1) Contsant Time
