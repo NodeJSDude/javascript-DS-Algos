@@ -1,0 +1,60 @@
+arrays are contiguous in memory and have indexes
+
+linked lists are not contiguous in memory
+they have a variable named head -> 1st item in list
+they have a variable named tail -> last item in list -> points to null
+    'a null terminated list'
+
+BigO linked list vs arrays
+----------------------------------
+Linked Lists 				Arrays 
+----------------------------------
+Push O(1) 					O(1) 
+Pop O(n)					O(1) 
+Shift O(1) 					O(n) 
+Unshift O(1) 				O(n) 
+Insert O(n) 				O(n) 
+Delete O(n) 			    O(n) 
+Lookup by Index
+ O(n) 						O(1) 
+Lookup by Value
+ O(n) 						O(n)
+
+
+ under the hood of a linked list
+----------------------------------
+ head                 tail
+ |                     |
+ 11 -> 3 -> 23 -> 7 -> 4 -> null
+                        |
+                        node:
+                        value and the pointer
+                        4 -> null
+
+                        is an object:
+
+                        {
+                            value:4,
+                            next: null
+                        }
+
+    let's take see how the nodes pointer to one another:
+    
+const linkedList = {
+    head: {
+        value: 11,
+        next: {
+            value: 3,
+            next: {
+                value: 23,
+                next: {
+                    value: 7,
+                    next: {
+                        value: 4,
+                        next: null
+                    }
+                }
+            }
+        }
+    }
+};
