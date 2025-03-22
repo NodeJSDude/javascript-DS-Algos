@@ -55,6 +55,8 @@ class LinkedList {
     this.length = 1;
   }
 
+  // O(1) operation adds a node
+
   push(value) {
     const newNode = new Node(value);
     if (!this.head) {
@@ -67,22 +69,54 @@ class LinkedList {
     this.length++;
     return this;
   }
+
+  // O(n) operation removes a node from the end
+
+  pop() {
+    if (this.length === 0) return undefined;
+    let temp = this.head;
+    let prev = this.head;
+    while (temp.next) {
+      prev = temp;
+      temp = temp.next;
+    }
+    this.tail = prev;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return temp;
+  }
 }
 
-let myLinkedlist = new LinkedList(7);
-myLinkedlist.push(4);
-console.log(myLinkedlist);
+// let's test the pop method
 
-/* 
+function test() {
+  let myLinkedList = new LinkedList(1);
+  myLinkedList.push(2);
 
-our conmsole logs:
-
-/mnt/c/node-stuff/LinkedLists$ node LinkedList.js
-
-LinkedList {
-    head: Node { value: 4, next: null },
-    tail: Node { value: 4, next: null },
-    length: 1
+  // (2) Items in LL - Returns 2 Node
+  if (myLinkedList.length !== 0) {
+    console.log(myLinkedList.pop().value);
+  } else {
+    console.log("null");
   }
 
-*/
+  // (1) Item in LL - Returns 1 Node
+  if (myLinkedList.length !== 0) {
+    console.log(myLinkedList.pop().value);
+  } else {
+    console.log("null");
+  }
+
+  // (0) Items in LL - Returns null
+  if (myLinkedList.length !== 0) {
+    console.log(myLinkedList.pop().value);
+  } else {
+    console.log("null");
+  }
+}
+
+test();
